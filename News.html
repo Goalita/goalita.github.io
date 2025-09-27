@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量子认知与心理交叉研究课题组 - 课题组新闻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+        
+        /* 导航栏样式 */
+        .nav-container {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2a7ae2;
+        }
+        
+        /* 内容区域样式 */
+        .content-container {
+            max-width: 1200px;
+            margin: 85px auto;
+            padding: 0 20px;
+        }
+        
+        /* 进度条样式 */
+        .progress-container {
+            margin-bottom: 30px;
+            position: relative;
+            height: 4px;
+            background-color: #e0e0e0;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #52c41a 0%, #73d13d 100%);
+            position: relative;
+        }
+        
+        .progress-indicators {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #d9d9d9;
+            transition: background-color 0.3s;
+        }
+        
+        .indicator.active {
+            background-color: #52c41a;
+        }
+        
+        /* 课题组新闻样式 */
+        .news-header {
+            margin-bottom: 30px;
+        }
+        
+        .news-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #52c41a;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        /* 课题组新闻列表样式 */
+        .news-list-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .group-news-title {
+            font-size: 24px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .group-news-list {
+            list-style-type: none;
+        }
+        
+        .group-news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .group-news-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .group-news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .group-news-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .group-news-item a:hover {
+            color: #2a7ae2;
+        }
+        
+        .group-news-item a::before {
+            content: "•";
+            color: #52c41a;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .group-news-date {
+            color: #888;
+            font-size: 14px;
+            margin-left: 20px;
+        }
+        
+         /* 页脚样式 */
+        footer {
+            background-color: #4255BD;
+            color: #CCCCCC;
+            height:30%;
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            font-size: 14px;
+
+}
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .group-news-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .group-news-date {
+                margin-left: 0;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .content-container {
+                padding: 0 15px;
+            }
+            
+            .news-list-container {
+                padding: 20px 15px;
+            }
+            
+            .group-news-title {
+                font-size: 20px;
+            }
+            
+            .group-news-item a {
+                font-size: 14px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav-container">
+        <div class="nav">
+            <div class="logo">
+                <img src="images\logo.png" alt="安徽农业大学校徽">
+                <h1>量子认知与心理交叉研究课题组</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#">首页</a>
+                <a href="Achievements.html">研究成果</a>
+                <a href="Team.html">组员介绍</a>
+                <a href="TeachWork.html">教学工作</a>
+                <a href="News.html">课题组新闻</a>
+                <a href="Contact.html">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 内容区域 -->
+    <div class="content-container">
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+            <div class="progress-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator active"></div>
+                <div class="indicator active"></div>
+                <div class="indicator active"></div>
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+        
+        <!-- 新闻标题区域 -->
+        <div class="news-header">
+            <h2 class="news-title">课题组新闻</h2>
+        </div>
+        
+        <!-- 课题组新闻列表 -->
+        <div class="news-list-container">
+            <h3 class="group-news-title">课题组新闻</h3>
+            <ul class="group-news-list">
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-05-19</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-09-22</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-09-18</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-09-15</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-09-04</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-08-27</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-06-16</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-05-15</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-03-21</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-03-10</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-03-04</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2024-11-29</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2024-10-12</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-04-14</span>
+                </li>
+                <li class="group-news-item">
+                    <a href="#">xxxxxxxxxxxxxxxxxxxxxxx"青年学者奖"</a>
+                    <span class="group-news-date">2025-05-19</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <p>© Shen Liu 2024-2025. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 进度条滚动效果
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+            const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            
+            // 更新导航栏阴影效果
+            const navContainer = document.querySelector('.nav-container');
+            if (scrollTop > 50) {
+                navContainer.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.15)';
+            } else {
+                navContainer.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // 给新闻标题添加点击效果
+        const newsTitles = document.querySelectorAll('.group-news-item a');
+        newsTitles.forEach(title => {
+            title.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.style.color = '#2a7ae2';
+                setTimeout(() => {
+                    this.style.color = '#333';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
